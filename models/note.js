@@ -2,16 +2,16 @@ const {model, Schema} = require("mongoose");
 
 const noteSchema = new Schema({
      title: String,
-     body : String,
-     email : String,
+     content : String,
+     color: {
+         type: String,
+         default: 'White'
+     },
      createdAt :{
          type :  Date,
-         default: Date.now
+         default: new Date()
      },
-     user:{
-         type: Schema.Types.ObjectId,
-         ref: "users"
-     }
+     username: String
 });
 
 

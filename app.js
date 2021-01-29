@@ -2,52 +2,39 @@ const exp = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
+const bp = require("body-parser")
+const cors = require("cors");
 
-const User = require("./models/user");
-const Note = require("./models/note");
+
+
+const BinController = require("./controllers/BinController");
+const NoteController = require("./controllers/NoteController");
+const UserController = require("./controllers/UserController");
 
 
 const app = exp();
-mongoose.connect("mongodb://localhost:27017/keeperDb", {useNewUrlParser:true, useUnifiedTopology:true});
+
 mongoose.set("useCreateIndex", true);
+
 
 app.use(session({secret:"fISRT TIME TRYINg Authentication. remember to use environmental var", resave:  false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bp.urlencoded({extended: true}));
+app.use(bp.json());
+app.use(cors({credentials: true, origin:"http://localhost:3000"}));
 
 
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
-app.get("/", (req,res) =>{
+app.use("/user", UserController);
+app.use("/note", NoteController);
+app.use("/bin", BinController);
 
-    res.send("react server is up");
-});
+ 
 
-app.post("/register", (req,res) =>{
-
-    User.register({username: req.body.email,islogged: false}, req.body.password, (err, user) => {
-        if(!err){
-            passport.authenticate("local") (req, res, () => {
-                user.updateOne({islogged}, {islogged: true});
-                    //Do something
-            });
-        }
-        else{
-            user.updateOne({islogged}, {islogged: true}, ())
-        }
-    })
-});
-
-app.post("/note", (req, res)=> {
-    const note =  new Note({
-        title : req.body.title,
-        body : req.body.body,
-        user: ...
-    });
-
-});
-
-
-app.listen(3000, () => console.log("listening on 3000"));
+mongoose.connect("mongodb://localhost:27017/keeperDb", {useNewUrlParser:true, useUnifiedTopology:true})
+    .then(() => { 
+        console.log("connected to mongo"); 
+        app.listen(5000, () => console.log(`Server running on 5000`));
+    }).catch(err => console.log(err));
+ 

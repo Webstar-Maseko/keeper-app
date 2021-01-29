@@ -3,9 +3,9 @@ const passLocalMon = require("passport-local-mongoose");
 
 
 const userSchema =  new Schema({
-    email: String,
-    password: String,
-    islogged: String
+   username: String,
+    password: String
+    
 });
 userSchema.plugin(passLocalMon);
 
