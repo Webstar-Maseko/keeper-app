@@ -5,12 +5,13 @@ const noteSchema = new Schema({
      content : String,
      color: {
          type: String,
-         default: 'White'
+        
      },
      createdAt :{
          type :  Date,
          default: new Date()
      },
+     image:String,
      username: String
 });
 

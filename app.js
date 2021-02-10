@@ -26,11 +26,11 @@ app.use(cors({credentials: true, origin:"http://localhost:3000"}));
 
 
 
-app.use("/user", UserController);
-app.use("/note", NoteController);
-app.use("/bin", BinController);
+app.use("/api/user", UserController);
+app.use("/api/note", NoteController);
+app.use("/api/bin", BinController);
 
- 
+   
 
 mongoose.connect("mongodb://localhost:27017/keeperDb", {useNewUrlParser:true, useUnifiedTopology:true})
     .then(() => { 

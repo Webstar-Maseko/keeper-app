@@ -28,6 +28,7 @@ router.post("/restore", (req,res)=>{
                 title: note.title,
                 content: note.content,
                 color: note.color,
+                image: note.image,
                 username: note.username
             });
             resNote.save();
