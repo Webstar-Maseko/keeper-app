@@ -12,7 +12,11 @@ const noteSchema = new Schema({
          default: new Date()
      },
      image:String,
-     username: String
+     username: String,
+     reminder:{
+         date: Date,
+         label: String
+     }
 });
 
 

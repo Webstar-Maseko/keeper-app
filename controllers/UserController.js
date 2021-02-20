@@ -12,10 +12,10 @@ router.post("/register", (req,res) =>{
     User.register({username: req.body.username}, req.body.password, (err, user) => {
         if(!err){
              passport.authenticate("local") (req, res, () => {
-                res.send(user);
+                res.send(user.username);
             });
         }
-        else{
+        else{ 
             res.send(err);
         }
     })
@@ -28,7 +28,7 @@ router.post("/login", (req,res) => {
     req.login(user,function(err){
         if(!err){
             passport.authenticate("local")(req,res, () => {
-                res.send(user);
+                res.send(user.username);
              
           
             });
