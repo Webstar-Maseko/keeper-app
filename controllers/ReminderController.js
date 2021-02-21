@@ -1,7 +1,7 @@
 const exp = require("express");
 const router = exp.Router();
 const Note = require("../models/note");
-const Delete = require("../models/deleted");
+
 
 router.get("/", (req, res)=>{
     Note.find({username: req.user.username, reminder:{$ne:undefined || null} }, (err,note) => {

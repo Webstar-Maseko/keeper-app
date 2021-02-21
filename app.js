@@ -12,6 +12,7 @@ const BinController = require("./controllers/BinController");
 const NoteController = require("./controllers/NoteController");
 const UserController = require("./controllers/UserController");
 const ReminderController = require("./controllers/ReminderController");
+const SearchController = require("./controllers/SearchController");
 
 const app = exp();
 
@@ -31,10 +32,11 @@ app.use("/api/user", UserController);
 app.use("/api/note", NoteController);
 app.use("/api/bin", BinController);
 app.use("/api/reminder", ReminderController);
+app.use("/api/search", SearchController)
 
      
 
-mongoose.connect("mongodb://localhost:27017/keeperDb", {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false})
+mongoose.connect("mongodb://localhost:27017/keeperDb", {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false}) 
     .then(() => { 
         console.log("connected to mongo"); 
         app.listen(port, () => console.log(`Server running on ${port}`));
