@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 
 import Header from "./Header";
 import Footer from "./footer";
@@ -12,19 +12,20 @@ import Bin from "./Routes/Bin";
 import Login from "./Authentication/login";
 import Home from "./Home";
 import Search from "./Routes/Search";
-import {BrowserRouter as Router,Redirect, Route, Switch} from "react-router-dom";
-import {AuthProvider, AuthContext} from "../components/context/auth";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { AuthContext} from "../components/context/auth";
 
 function App() {
     const {user, logout} = useContext(AuthContext);
+    let [result, setResult] = useState([]);
     
 
  return  (
   <Router> 
-   <Header/>
+   <Header setResult={setResult}/>
    <Switch>
       <Route exact path={"/login"} component={Login} />
-      <Route path={"/search"} component={Search} />
+      <Route path={"/search"} render={(props) => (<Search {...props} results={result} />)} />
         <Route path ={"/"} render={({match :  {path}}) =>(
           <Row>
             <Col md={3} className="pl-0">

@@ -7,7 +7,7 @@ import {AuthProvider} from "./components/context/auth";
 
 ReactDOM.render(<AuthProvider >
   
-<App style={{backgroundColor: "black !important"}}/>
+<App />
 </AuthProvider>,
   document.getElementById('root')
 );

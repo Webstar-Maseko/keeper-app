@@ -8,7 +8,6 @@ import Reminder from "./Routes/Reminder";
 import Bin from "./Routes/Bin";
 
 
-
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 function Home(){

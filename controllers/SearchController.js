@@ -4,9 +4,10 @@ const Note = require("../models/note");
 
 
 router.post("/", (req, res)=>{
+    
    
     Note.find({username: req.user.username , $or :[
-        {"title":{$regex: req.body.search, $options:'i'}},{"content":{$regex: req.body.search, $options:'i'}} ] }, 
+        {"title":{$regex: req.body.value, $options:'i'}},{"content":{$regex: req.body.value, $options:'i'}} ] }, 
     (err, note) =>{
         err ? console.log(err) : res.send(note);
     })

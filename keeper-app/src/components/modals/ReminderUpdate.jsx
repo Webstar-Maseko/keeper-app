@@ -28,7 +28,7 @@ function SetReminder(props) {
   
     return (
       <>
-        <button onClick={handleShow}>
+        <button className="rem" onClick={handleShow}>
        <AddAlertIcon/>
         </button>
   

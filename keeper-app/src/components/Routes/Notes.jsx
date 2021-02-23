@@ -17,7 +17,7 @@ function Notes(props){
     axios.get("/api/note", {withCredentials:true}).then(res =>{
         if(res.data === "unauthorized")
         {
-            
+            logout();
             props.history.push("/login");
   
         }
@@ -27,7 +27,7 @@ function Notes(props){
           
         }
     
-}).catch(err =>    props.history.push("/login"));
+}).catch(err =>  {logout();   props.history.push("/login")});
 });
 
     function addEntry(note){

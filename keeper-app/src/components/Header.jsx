@@ -10,31 +10,35 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Avatar from "@material-ui/core/Avatar";
 import {withRouter} from "react-router-dom";
 import axios from "axios";
-import Search from "./Routes/Search";
 function Header(props){
 
     let[search, setSearch] =useState("");
-    let[items, setItems] = useState([]);
+  
     const {user, logout} = useContext(AuthContext);
   
+    function handleSubmit(value){
+        console.log(typeof(value));
+
+        if(value  !== ""){
+            axios.post("api/search/",{value}).then(res => props.setResult(() => res.data )).catch(err => alert(err));
+        }
+        else{
+            props.setResult(x => []);
+        }
+        
+    }
 
     function handleChange(event){
         let{value} = event.target;
-
-        setSearch(x => value);
-        if(search !== ""){
-            axios.post("api/search/",{search}).then(res => setItems=(() => res.data)).catch(err => alert(err));
-
-        }
-      
-    
-       
+        setSearch(() => value, handleSubmit(value));
+ 
     }
     function show(){
        props.history.push("/search");
     }
     function revert(){
        setSearch(x => "");
+       props.setResult(x => [])
         props.history.push("/");
         
     }
@@ -45,10 +49,10 @@ function Header(props){
      <Navbar.Toggle aria-controls="header" />
      { user && <>
      <Navbar.Collapse id="header">
-    <Form inline > 
+    <Form inline  > 
     <InputGroup className="search"  >
         <FormControl   onFocus={show} name="txtSearch" value={search} onChange={handleChange} type="text" placeholder="search" />
-        <InputGroup.Append> <Button variant="outline"  onClick={revert} style={{backgroundColor:  "#fff"}}>X</Button> </InputGroup.Append>
+        <InputGroup.Append> <Button variant="outline"   onClick={revert} style={{backgroundColor:  "#fff"}}>X</Button> </InputGroup.Append>
     </InputGroup> 
     </Form> 
     
