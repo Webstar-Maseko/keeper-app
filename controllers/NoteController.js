@@ -28,7 +28,7 @@ router.get("/", (req,res) =>{
 //const fUpload = upload.single('image');
 router.post("/",upload.single("image"), (req, res)=> {
     let note =new Note();
-    console.log(req.file);
+   
     if(req.file === undefined ){
         note =  new Note({
             title : req.body.title,
@@ -66,8 +66,8 @@ router.post("/delete", (req,res) =>{
         
         
     });
-    Note.findByIdAndDelete(req.body._id,(err, notes)=>{
-                err ? res.send(err) : res.send(notes);
+    Note.findByIdAndDelete(req.body._id,(err, note)=>{
+                err ? res.send(err) : res.send(note);
     });
 });
 

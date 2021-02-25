@@ -17,10 +17,10 @@ function Header(props){
     const {user, logout} = useContext(AuthContext);
   
     function handleSubmit(value){
-        console.log(typeof(value));
-
         if(value  !== ""){
-            axios.post("api/search/",{value}).then(res => props.setResult(() => res.data )).catch(err => alert(err));
+            axios.post("api/search/",{value})
+            .then(res => props.setResult(() => res.data ))
+            .catch(err => {alert(err); logout(); props.history.push("/login")});
         }
         else{
             props.setResult(x => []);

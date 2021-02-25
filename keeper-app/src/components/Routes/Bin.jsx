@@ -8,31 +8,35 @@ function Bin(props){
     let [deletedNotes, setDeleted] = useState([]);
     const {user, logout} = useContext(AuthContext);
     !user && props.history.push("/login");
+    function populate(){
+        axios.get("/api/bin").then(res =>{
+            if(res.data === "unauthorized"){
+                logout();
+                props.history.push("/login");
+            }
+            else{
+                setDeleted(res.data);
+            }
+    
+        }).catch(err => alert(err));
 
-    useEffect(() =>{
-    axios.get("/api/bin",{withCredentials:true}).then(res =>{
-        if(res.data === "unauthorized"){
-            props.history.push("/login");
-        }
-        else{
-            setDeleted(res.data);
-        }
+    }
 
-    }).catch();
+    useEffect(() =>{ populate()
+   
 
-});
+}, [deletedNotes]);
 
 
     function Delete (_id){
     
         axios.post("/api/bin/delete", {_id}).then(res =>{
-          
-            setDeleted(res.data);
+            populate();
         }).catch(err => console.log(err));
       
     }
     function Restore(_id){
-        axios.post("/api/bin/restore", {_id}).then(res => setDeleted(res.data))
+        axios.post("/api/bin/restore", {_id}).then(res => populate())
         .catch(err => console.log(err));
     }
 

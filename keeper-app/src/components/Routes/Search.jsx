@@ -14,9 +14,9 @@ function Search(props){
     function Delete (_id){
         
         axios.post("/api/note/delete", {_id}).then(res =>{
-        
-            
-            
+           alert("Successfully deleted");
+           props.history.push("/");
+             
         }).catch(err => alert(err));
       
     }

@@ -12,5 +12,5 @@ router.post("/", (req, res)=>{
         err ? console.log(err) : res.send(note);
     })
 });
-
+ 
 module.exports = router;

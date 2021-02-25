@@ -48,7 +48,7 @@ function Login(props){
          
         if(user.username !== ""){
             axios.post("/api/user/login", user).then(res => {
-                console.log(res.data);
+       
                 context.login(res.data);
                props.history.push("/");
              }).catch(err =>{ setErr("username or password is unrecognized"); setLoad(false);});
@@ -65,7 +65,7 @@ function Login(props){
              
                 if(res.data.name === undefined){
                     context.login(res.data);
-                    props.history.push("/view");
+                    props.history.push("/");
                
                 }
                 else{

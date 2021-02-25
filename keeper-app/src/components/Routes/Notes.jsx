@@ -8,30 +8,32 @@ import {AuthContext} from "../context/auth";
 
 
 function Notes(props){
+
+    function populate(){
+        axios.get("/api/note").then(res =>{
+            if(res.data === "unauthorized")
+            {
+                logout();
+                props.history.push("/login");
+      
+            }
+            else{
+                addNotes(res.data);
+              
+              
+            }
+    }).catch(err =>  {logout();   props.history.push("/login")})
+}
    
     
     let [notes, addNotes] = useState([]);
     const {user, logout} = useContext(AuthContext);
     !user && props.history.push("/login");
-    useEffect(() =>{
-    axios.get("/api/note", {withCredentials:true}).then(res =>{
-        if(res.data === "unauthorized")
-        {
-            logout();
-            props.history.push("/login");
-  
-        }
-        else{
-            addNotes(res.data);
-          
-          
-        }
-    
-}).catch(err =>  {logout();   props.history.push("/login")});
-});
+    useEffect(() => {populate()}
+, [notes]);
 
     function addEntry(note){
-        axios.get("/api/note", {withCredentials:true})
+        axios.get("/api/note")
         .then(res =>addNotes(res.data))
         .catch(err => alert(err));
         
@@ -39,7 +41,9 @@ function Notes(props){
     function Delete (_id){
      
         axios.post("/api/note/delete", {_id}).then(res =>{
-            addNotes(res.data);
+           
+            populate();
+            
         }).catch(err => alert(err));
       
     }

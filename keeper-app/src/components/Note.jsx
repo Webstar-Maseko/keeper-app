@@ -26,7 +26,7 @@ function Note(props) {
           <DeleteIcon />
         </button>
         {props.name === "bin" && <button className={hide ? "rest": "d-none"} data-toggle="tooltip" title="Restore note" onClick={()=> props.restore(props._id)} > <RestoreIcon/> </button>}
-        {hide ? <SetReminder  _id={props._id} />: undefined }
+        {props.name === "bin"? null : hide ? <SetReminder  _id={props._id} />: undefined }
       </div>
     );
   }

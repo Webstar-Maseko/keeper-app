@@ -2,7 +2,8 @@ const exp = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
-const bp = require("body-parser")
+const bp = require("body-parser");
+const path = require('path');
 const cors = require("cors");
 const port = 5000 || PROCESS.ENV.PORT;
 require("dotenv").config();
@@ -15,17 +16,16 @@ const UserController = require("./controllers/UserController");
 const ReminderController = require("./controllers/ReminderController");
 const SearchController = require("./controllers/SearchController");
 
-const app = exp();
-
+const app = exp();  
 mongoose.set("useCreateIndex", true);
 
-
+app.use(exp.static(path.resolve(__dirname,"./keeper-app/build")));
 app.use(session({secret:process.env.secret, resave:  false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
-app.use(cors({credentials: true, origin:"http://localhost:3000"}));
+//app.use(cors({credentials: true, origin:"http://localhost:3000"}));
 
    
    
@@ -35,7 +35,11 @@ app.use("/api/bin", BinController);
 app.use("/api/reminder", ReminderController);
 app.use("/api/search", SearchController)
 
-     
+app.get('*', (req,res) =>{
+   res.sendFile(path.resolve(__dirname, "./keeper-app/build",'index.html'));   
+});
+ 
+       
 
 mongoose.connect("mongodb://localhost:27017/keeperDb", {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false}) 
     .then(() => { 
