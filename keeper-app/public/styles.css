@@ -2,38 +2,47 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background: #eee;
-  background-color: #c2ba98 !important;
+  background-color: #c4c5c1 !important;
   background-image: url("food.png");
-  width: 100vw;
-  padding: 0 12px;
+  margin: 0 !important;
+  height: 100%;
+  left: 0;
+  right: 0;
+  /* padding: 0 12px; */
 
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 header {
-  background-color: #afab70;
-  margin: 0 -16px;
+  background-color: #585852fd;
+  /* margin: 0 -16px; */
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 header h1 {
-  color: #5a4831;
+  color: #afab70;
   font-family: "McLaren", cursive;
   font-weight: 200;
 }
 
 footer {
   position: absolute;
+  background-color: #585852;
   text-align: center;
-  bottom: 0;
+  bottom: 0 !important;
   width: 100%;
-  height: 2.5rem;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
+  z-index: 2;
 }
 
 footer p {
   color: #ccc;
+  padding: 5px !important;
+  margin-bottom: 0 !important;
 }
 .note {
   background: #fff;
@@ -82,11 +91,42 @@ footer p {
   display: inline;
 }
 .myClass {
-  height: 100vh !important;
+  height: 90vh !important;
   width: 100%;
   overflow-x: hidden;
   z-index: 1;
   background-color: rgba(151, 135, 110, 0.493);
+  /* position: fixed; */
+  /* position: relative; */
+  margin-top: 0;
+  padding-right: 0 !important;
+}
+@media screen and (min-width: 900px) {
+  .myClass {
+    /* height: 90vh !important; */
+    width: 25%;
+    overflow-x: hidden;
+
+    background-color: rgba(151, 135, 110, 0.493);
+    position: fixed;
+    margin-top: 94.1vh;
+  }
+  header {
+    background-color: #585852fd;
+    /* margin: 0 -16px; */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    left: 0;
+    top: 0;
+    width: 100%;
+    position: fixed;
+  }
+  .main-content {
+   
+    margin-top: 14vh;
+    width: 100vw;
+    min-height: 100%;
+    
+  }
 }
 
 .myClass a:hover,
@@ -197,6 +237,11 @@ form.create-note button {
     border: none !important;
   }
 }
+@media screen and (min-width: 450px) {
+  .card-group {
+    display: flex !important;
+  }
+}
 
 .nav-link {
   padding: 1rem 1rem !important;
@@ -204,9 +249,38 @@ form.create-note button {
   font-weight: 600 !important;
   color: black !important;
 }
-.container-fluid {
-  padding: 0 12px;
-}
+
 .rem {
   color: royalblue !important;
+}
+.home {
+  height: 90vh;
+  width: 100% !important;
+  background-image: linear-gradient(0deg, #00000088 30%, #ffffff44 100%),
+    url("3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.card-img {
+  height: 34rem !important;
+  width: 100% !important;
+  border-radius: 0.8rem !important;
+}
+.home-card {
+  background-color: transparent !important;
+  border: none !important;
+  width: 50% !important;
+}
+.tb {
+  padding-top: 10rem !important;
+  width: 100% !important;
+  height: 32rem !important;
+}
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+.cl {
+  color: rgb(223, 219, 219);
 }

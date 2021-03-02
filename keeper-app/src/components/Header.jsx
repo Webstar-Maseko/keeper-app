@@ -39,11 +39,11 @@ function Header(props){
     function revert(){
        setSearch(x => "");
        props.setResult(x => [])
-        props.history.push("/");
+        props.history.push("/views");
         
     }
   
-    return  (<header><Navbar bg="none" expand="md">
+    return  (<header ><Navbar bg="none" expand="md">
     <Navbar.Brand ><h1>Keeper </h1> </Navbar.Brand>  
   
      <Navbar.Toggle aria-controls="header" />
@@ -54,12 +54,13 @@ function Header(props){
         <FormControl   onFocus={show} name="txtSearch" value={search} onChange={handleChange} type="text" placeholder="search" />
         <InputGroup.Append> <Button variant="outline"   onClick={revert} style={{backgroundColor:  "#fff"}}>X</Button> </InputGroup.Append>
     </InputGroup> 
-    </Form> 
-    
-    <NavDropdown className=" ml-auto mr-auto p-0" title={<Avatar/>} id="collasible-nav-dropdown" >
-        <NavDropdown.Item > Welcome {user} </NavDropdown.Item>
-        <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item> 
+    </Form>  
+   <h5 className="ml-auto"> {user} </h5>
+    <NavDropdown className=" mr-auto p-0" title={<Avatar/>} id="collasible-nav-dropdown" >
+       
+        <NavDropdown.Item className="text-danger" onClick={logout}>Logout</NavDropdown.Item> 
         </NavDropdown>
+        
     </Navbar.Collapse>
 </>
     } 

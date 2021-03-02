@@ -19,11 +19,11 @@ function SideNav(){
   </Nav.Item>
 
   <Nav.Item className="pb-0">
-  <Nav.Link as={Link} to={`/reminder`} eventKey="link-1" > <i className="pr-3"> <NotificationsNoneIcon/> </i> Reminders</Nav.Link>
+  <Nav.Link as={Link} to={`${url}/reminder`} eventKey="link-1" > <i className="pr-3"> <NotificationsNoneIcon/> </i> Reminders</Nav.Link>
   </Nav.Item>
 
   <Nav.Item className="pb-0">
-  <Nav.Link  as={Link} to={`/bin`}  eventKey="link-2"><i className="pr-3"><DeleteOutlineIcon/></i> Bin</Nav.Link>
+  <Nav.Link  as={Link} to={`${url}/bin`}  eventKey="link-2"><i className="pr-3"><DeleteOutlineIcon/></i> Bin</Nav.Link>
   </Nav.Item>
 
 </Nav>

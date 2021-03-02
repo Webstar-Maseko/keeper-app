@@ -49,7 +49,7 @@ function Notes(props){
     }
     return( <div>
         <CreateArea  addNote={addEntry} />
-        {notes.length >0 ? notes.map((item, index) => (<Note key={index} _id={item._id} color={item.color} title={item.title} date={item.createdAt} name="not" remind={item.reminder} img={item.image} content={item.content} onDelete={Delete} />)) :  <div className="text-center vertical-center" >
+        {notes.length >0 ? notes.map((item, index) => (<Note key={index} _id={item._id} color={item.color} title={item.title} date={item.createdAt} name="not" remind={item.reminder} img={item.image} content={item.content} onDelete={Delete} />)) :  <div className="text-center cl vertical-center" >
         <h2>Notes you add will appear here.</h2>
         <br/>
         <br/>

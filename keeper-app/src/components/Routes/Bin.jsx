@@ -44,7 +44,7 @@ function Bin(props){
 
     return (<div>
         {deletedNotes.length >0 ? deletedNotes.map((item, index) => (<Note key={index} _id={item._id} title={item.title} date={item.createdAt} name="bin" color={item.color} img={item.image} restore={Restore} content={item.content} onDelete={Delete} />)) : 
-     <div className="text-center vertical-center" >
+     <div className="text-center cl vertical-center" >
     <h2>Deleted notes will appear here</h2></div>}
     </div>)
 }

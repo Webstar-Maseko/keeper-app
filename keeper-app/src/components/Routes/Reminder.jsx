@@ -38,7 +38,7 @@ function Reminder( props){
     }
 
     return (<div> 
-    {reminder.length === 0 ? <div className="text-center vertical-center" >
+    {reminder.length === 0 ? <div className="text-center cl vertical-center" >
     <h2>Your reminders will appear here....</h2> 
     </div> : reminder.map((item, index) => <Note key={index} _id={item._id} remind={item.reminder} color={item.color} onDelete={Delete} content={item.content} title={item.title} remin={item.reminder} /> ) }
     
