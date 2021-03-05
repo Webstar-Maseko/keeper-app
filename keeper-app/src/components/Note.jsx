@@ -16,7 +16,7 @@ function Note(props) {
      
       
       <div className="note" style={bg} onMouseEnter={() =>setVis(true)} onMouseLeave={() =>setVis(false)} >
-      {props.img === undefined ? null: <img src={`build/ext-images/${props.img}`} alt=""/>}
+      {props.img === undefined ? null: <img src={`keeper-app/build/ext-images/${props.img}`} alt=""/>}
 
         <h1>{props.title}</h1>
         <p>{props.content}</p>
