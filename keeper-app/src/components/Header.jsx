@@ -43,7 +43,7 @@ function Header(props){
         
     }
   
-    return  (<header ><Navbar bg="none" expand="md">
+    return  (<header ><Navbar bg="none" expand="sm">
     <Navbar.Brand ><h1>Keeper </h1> </Navbar.Brand>  
   
      <Navbar.Toggle aria-controls="header" />
@@ -55,9 +55,9 @@ function Header(props){
         <InputGroup.Append> <Button variant="outline"   onClick={revert} style={{backgroundColor:  "#fff"}}>X</Button> </InputGroup.Append>
     </InputGroup> 
     </Form>  
-   <h5 className="ml-auto"> {user} </h5>
-    <NavDropdown className=" mr-auto p-0" title={<Avatar/>} id="collasible-nav-dropdown" >
-       
+ 
+    <NavDropdown className="pl-5 ml-3" title={<Avatar/>} id="collasible-nav-dropdown" >
+       <NavDropdown.Item >Hi {user}! </NavDropdown.Item>
         <NavDropdown.Item className="text-danger" onClick={logout}>Logout</NavDropdown.Item> 
         </NavDropdown>
         

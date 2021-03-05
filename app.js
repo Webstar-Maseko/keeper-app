@@ -41,7 +41,7 @@ app.get('*', (req,res) =>{
  
        
 
-mongoose.connect("mongodb://localhost:27017/keeperDb", {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false}) 
+mongoose.connect(process.env.mongo, {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false}) 
     .then(() => { 
         console.log("connected to mongo"); 
         app.listen(port, () => console.log(`Server running on ${port}`));

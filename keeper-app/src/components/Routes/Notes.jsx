@@ -28,7 +28,7 @@ function Notes(props){
     
     let [notes, addNotes] = useState([]);
     const {user, logout} = useContext(AuthContext);
-    !user && props.history.push("/login");
+    !user && props.history.push("/");
     useEffect(() => {populate()}
 , [notes]);
 

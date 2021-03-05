@@ -10,7 +10,7 @@ import {Link, useRouteMatch} from "react-router-dom";
 
 function SideNav(){
   let {url} = useRouteMatch();
-    return(<Navbar fixed expand="sm" className="pl-0 pt-0 ">
+    return(<Navbar fixed expand="md" className="pl-0 pt-0 pr-0 ">
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse aria-orientation="vertical" id="basic-navbar-nav">
        <Nav  variant='pills'  data-spy="affix"  defaultActiveKey={`${url}`} className="nav flex-column sticky myClass pt-1">
