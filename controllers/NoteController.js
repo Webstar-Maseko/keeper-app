@@ -8,7 +8,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
     destination:(req, file, cb) =>{
-        cb(null, 'keeper-app/build/ext-images'); 
+        cb(null, 'keeper-app/public/ext-images'); 
     },
     filename: (req, file, cb) =>{
         cb(null, Date.now() +  path.extname(file.originalname));
