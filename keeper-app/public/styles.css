@@ -263,6 +263,7 @@ form.create-note button {
     width: 100%;
     padding-right: 0 !important;
     margin-top: 0 !important;
+    height: auto !important;
   }
   .card-group {
     display: flex !important;
