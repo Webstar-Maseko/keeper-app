@@ -30,7 +30,7 @@ function Notes(props){
     const {user, logout} = useContext(AuthContext);
     !user && props.history.push("/");
     useEffect(() => {populate()}
-, [notes]);
+, []);
 
     function addEntry(note){
         axios.get("/api/note")

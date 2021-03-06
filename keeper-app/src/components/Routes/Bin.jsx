@@ -25,7 +25,7 @@ function Bin(props){
     useEffect(() =>{ populate()
    
 
-}, [deletedNotes]);
+}, []);
 
 
     function Delete (_id){

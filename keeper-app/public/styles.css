@@ -235,7 +235,7 @@ form.create-note button {
     height: 112px;
   }
   .main-content {
-    margin-top: 16vh;
+    margin-top: 15.3vh;
     width: 100vw;
     min-height: 100vh;
   }
@@ -252,6 +252,9 @@ form.create-note button {
   }
   .note img {
     width: 100%;
+  }
+  .note button {
+    float: none;
   }
   form.create-note {
     width: 90%;

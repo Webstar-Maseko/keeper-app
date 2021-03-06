@@ -26,7 +26,7 @@ function Reminder( props){
     useEffect(() =>{
         populate();
        
-    }, [reminder]);
+    }, []);
 
     function Delete(_id) {
 
