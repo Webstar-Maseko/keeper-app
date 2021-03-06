@@ -5,10 +5,11 @@ const passport = require("passport");
 const bp = require("body-parser");
 const path = require('path');
 const cors = require("cors");
-const port = 5000 || PROCESS.ENV.PORT;
+const port = 5000 || process.env.PORT;
+const moncon = "mongodb://localhost:27017/keeperDb" || process.env.mongo
 require("dotenv").config();
 
-
+ 
 
 const BinController = require("./controllers/BinController");
 const NoteController = require("./controllers/NoteController");
@@ -39,9 +40,9 @@ app.get('*', (req,res) =>{
    res.sendFile(path.resolve(__dirname, "./keeper-app/build",'index.html'));   
 });
  
-       
+        
 
-mongoose.connect(process.env.mongo, {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false}) 
+mongoose.connect(moncon, {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false}) 
     .then(() => { 
         console.log("connected to mongo"); 
         app.listen(port, () => console.log(`Server running on ${port}`));

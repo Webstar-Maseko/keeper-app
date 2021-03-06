@@ -7,6 +7,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 
 
+
 function Note(props) {
   let [hide, setVis] = useState(false)
   let bg={backgroundColor: props.color};
@@ -16,11 +17,11 @@ function Note(props) {
      
       
       <div className="note" style={bg} onMouseEnter={() =>setVis(true)} onMouseLeave={() =>setVis(false)} >
-      {props.img === undefined ? null: <img src={`keeper-app/build/ext-images/${props.img}`} alt=""/>}
+      {props.img === undefined ? null: <img src={`./ext-images/${props.img}`} alt=""/>}
 
         <h1>{props.title}</h1>
         <p>{props.content}</p>
-        {(props.name !=="bin" && props.remind !== undefined || null) ? <p className="time btn-outline-secondary"><AccessTimeIcon/>  {(props.remind.date).substring(0,16).replace("T", " ")}, {props.remind.label} </p>: null}
+        {(props.name !=="bin" && props.remind !== undefined) ? <p className="time btn-outline-secondary"><AccessTimeIcon/>  {(props.remind.date).substring(0,16).replace("T", " ")}, {props.remind.label} </p>: null}
         
         <button className={hide ? undefined: "d-none"} data-toggle="tooltip" title="Delete note" onClick={() => props.onDelete(props._id)}>
           <DeleteIcon />
