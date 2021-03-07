@@ -5,10 +5,11 @@ import Light from "@material-ui/icons/EmojiObjects"
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import {Link, useRouteMatch} from "react-router-dom";
+import Badge from "@material-ui/core/Badge";
 
 
 
-function SideNav(){
+function SideNav(props){
   let {url} = useRouteMatch();
     return(<Navbar fixed expand="md" className="pl-0 pt-0 pr-0 ">
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -17,9 +18,16 @@ function SideNav(){
     <Nav.Item className="pb-0">
   <Nav.Link href={`${url}`}><i className="pr-3"><Light/></i> Notes </Nav.Link>
   </Nav.Item>
-
   <Nav.Item className="pb-0">
-  <Nav.Link as={Link} to={`${url}/reminder`} eventKey="link-1" > <i className="pr-3"> <NotificationsNoneIcon/> </i> Reminders</Nav.Link>
+  
+  <Nav.Link as={Link} to={`${url}/reminder`} eventKey="link-1" >
+    <i className="pr-3"> 
+  <Badge color="secondary" badgeContent={props.count}>
+
+  <NotificationsNoneIcon/> 
+  </Badge> 
+  </i> Reminders
+   </Nav.Link>
   </Nav.Item>
 
   <Nav.Item className="pb-0">

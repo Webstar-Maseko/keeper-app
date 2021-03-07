@@ -18,6 +18,7 @@ import { AuthContext} from "../components/context/auth";
 function App() {
     const {user, logout} = useContext(AuthContext);
     let [result, setResult] = useState([]);
+    let [count, setCount] = useState();
     
 
  return  (
@@ -32,12 +33,12 @@ function App() {
         <Route path ={"/views"} render={({match :  {path}}) =>(
           <Row>
             <Col md={3} className="pl-0 pr-0">
-              <SideNav />
+              <SideNav count={count} />
             </Col>
             <Col md={9} className="pl-0 pr-0">
               <Switch>
                 <Route exact path={path + "/"} component={Notes} />
-                <Route exact path={path +"/reminder"}  component={Reminder} />
+                <Route exact path={path +"/reminder"} render={(props) => (<Reminder {...props} setCount={setCount} />)} />
                 <Route  exact path ={path +"/bin"}  component={Bin} />
                 </Switch>
 

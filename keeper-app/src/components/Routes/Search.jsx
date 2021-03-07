@@ -1,14 +1,12 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import Note from "../Note";
 import axios from "axios";
-
 import {AuthContext} from "../context/auth";
-
-
-
+import FeedBack from "../modals/feedback";
 function Search(props){
     
     const {user, logout} = useContext(AuthContext);
+    let [open, setOpen] = useState(false);
 
     !user && logout();
     let items = props.results;

@@ -6,7 +6,6 @@ import {AuthContext} from "../context/auth";
 
 function Reminder( props){
 
-
     let [reminder, setReminder] = useState([]);
     const {user, logout} = useContext(AuthContext);
     !user && props.history.push("/login");
@@ -19,15 +18,18 @@ function Reminder( props){
             }
             else{
                 setReminder(res.data);
+               
+
             }
         }).catch(err => {alert(err); logout();   props.history.push("/login"); });
 
     }
     useEffect(() =>{
         populate();
+      
        
     }, []);
-
+    props.setCount(() => reminder.length);
     function Delete(_id) {
 
         axios.post("/api/reminder/delete", {_id})
@@ -36,7 +38,7 @@ function Reminder( props){
         .catch(err => 
             alert(err));
     }
-
+ 
     return (<div> 
     {reminder.length === 0 ? <div className="text-center cl vertical-center" >
     <h2>Your reminders will appear here....</h2> 

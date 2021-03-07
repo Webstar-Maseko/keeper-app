@@ -121,8 +121,8 @@ footer p {
   margin-right: auto;
 }
 .vertical-center {
-  min-height: 50%; /* Fallback for browsers do NOT support vh unit */
-  min-height: 50vh; /* These two lines are counted as one :-)       */
+  min-height: 60%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 60vh; /* These two lines are counted as one :-)       */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,10 +233,10 @@ form.create-note button {
     width: 100%;
     position: fixed;
     height: 112px;
+    margin-bottom: 10px;
   }
   .main-content {
-    margin-top: 15.3vh;
-    width: 100vw;
+    margin-top: 15.5vh;
     min-height: 100vh;
   }
 }
@@ -244,6 +244,11 @@ form.create-note button {
 @media only screen and (max-width: 600px) {
   .main-content {
     min-height: 100vh;
+  }
+  #custom {
+    padding-top: 10px !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
   }
   .note {
     width: 90% !important;
@@ -303,9 +308,11 @@ form.create-note button {
   width: 50% !important;
 }
 .tb {
-  padding-top: 10rem !important;
+  padding-top: 8rem !important;
   width: 100% !important;
   height: 32rem !important;
+  word-wrap: break-word;
+  color: burlywood;
 }
 .row {
   margin-right: 0 !important;

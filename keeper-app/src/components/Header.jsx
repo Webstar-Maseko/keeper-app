@@ -10,6 +10,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Avatar from "@material-ui/core/Avatar";
 import {withRouter} from "react-router-dom";
 import axios from "axios";
+import Nav from "react-bootstrap/esm/Nav";
 function Header(props){
 
     let[search, setSearch] =useState("");
@@ -55,8 +56,10 @@ function Header(props){
         <InputGroup.Append> <Button variant="outline"   onClick={revert} style={{backgroundColor:  "#fff"}}>X</Button> </InputGroup.Append>
     </InputGroup> 
     </Form>  
- 
-    <NavDropdown className="pl-5 ml-3" title={<Avatar/>} id="collasible-nav-dropdown" >
+    <Nav className="ml-5 pl-5 " id="custom">
+    <Avatar/>
+    </Nav>
+    <NavDropdown className=""  id="collasible-nav-dropdown" >
        <NavDropdown.Item >Hi {user}! </NavDropdown.Item>
         <NavDropdown.Item className="text-danger" onClick={logout}>Logout</NavDropdown.Item> 
         </NavDropdown>
