@@ -8,8 +8,9 @@ function Home(props){
  {user && props.history.push("/views")}
     return(
         <div className="home">
-            <h2>
-               <h1>Welcome</h1>This is Google Keep's poor cousin. Here you can store notes, set reminders, recover deleted notes and search notes...
+         <h1 className="hc">Welcome</h1>
+            <h2 className="hw">
+              This is Google Keep's poor cousin. Here you can store notes, set reminders, recover deleted notes and search notes...
             </h2>
             <br/>
             <a href="/login" className="btn btn-primary">Get Started</a>

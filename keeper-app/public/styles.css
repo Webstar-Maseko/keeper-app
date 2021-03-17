@@ -8,7 +8,6 @@ body {
   height: 100%;
   left: 0;
   right: 0;
-  
 }
 
 header {
@@ -19,7 +18,6 @@ header {
   top: 0;
   width: 100%;
   z-index: 2;
- 
 }
 
 header h1 {
@@ -157,6 +155,14 @@ form.create-note button {
   cursor: pointer;
   outline: none;
 }
+.hw {
+  width: 40rem !important;
+  color: #ddd;
+  font-weight: 300;
+}
+.hc {
+  color: #afab70;
+}
 #create-inp {
   position: absolute;
   right: -8px;
@@ -204,11 +210,7 @@ form.create-note button {
 }
 
 @media screen and (min-width: 600px) {
- 
-
- 
   .main-content {
-   
     min-height: 100vh;
   }
 }
