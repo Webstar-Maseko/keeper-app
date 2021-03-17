@@ -4,12 +4,10 @@ const Note = require("../models/note");
 const Delete = require("../models/deleted");
 const multer = require("multer");
 const path = require("path");
+const cloudinary = require("../config/cloudinary");
 
 
 const storage = multer.diskStorage({
-    destination:(req, file, cb) =>{
-        cb(null, 'keeper-app/public/ext-images'); 
-    }, 
     filename: (req, file, cb) =>{
         cb(null, Date.now() +  path.extname(file.originalname));
     }
@@ -25,7 +23,7 @@ router.get("/", (req,res) =>{
          res.send("unauthorized"); 
     }
 });
-//const fUpload = upload.single('image');
+
 router.post("/",upload.single("image"), (req, res)=> {
     let note =new Note();
    
@@ -37,17 +35,28 @@ router.post("/",upload.single("image"), (req, res)=> {
             username: req.user.username
                        
         });
+        note.save(() => res.send("saved successfully"));
     }
     else{
-        note =  new Note({
-            title : req.body.title,
-            content : req.body.content, 
-            color: req.body.color,
-            username: req.user.username,
-            image: req.file.filename
+        cloudinary.uploader.upload(req.file.path, (error, result) =>{
+            if(!error){
+                note =  new Note({
+                    title : req.body.title,
+                    content : req.body.content, 
+                    color: req.body.color,
+                    username: req.user.username,
+                    image: result.secure_url
+                });
+                note.save(() => res.send("saved successfully"));
+            }else{
+                console.log(error);
+            }
+
         });
+       
+       
     }
-    note.save(() => res.send("saved successfully"));
+   
 
 });
 router.post("/delete", (req,res) =>{

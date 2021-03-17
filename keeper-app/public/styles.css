@@ -8,9 +8,7 @@ body {
   height: 100%;
   left: 0;
   right: 0;
-  /* padding: 0 12px; */
-
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  
 }
 
 header {
@@ -21,7 +19,7 @@ header {
   top: 0;
   width: 100%;
   z-index: 2;
-  height: 112px;
+ 
 }
 
 header h1 {
@@ -84,21 +82,13 @@ footer p {
   outline: none;
   background-color: transparent;
 }
-.note .date {
-  position: relative;
-  float: left;
-  color: grey;
-  width: 36px;
-  display: inline;
-}
+
 .myClass {
   height: 100vh !important;
   width: 100%;
   overflow-x: hidden;
   z-index: 1;
-  background-color: rgba(151, 135, 110, 0.493);
-  /* position: fixed; */
-  /* position: relative; */
+  background-color: transparent;
   margin-top: 0;
   padding-right: 0 !important;
 }
@@ -214,29 +204,11 @@ form.create-note button {
 }
 
 @media screen and (min-width: 600px) {
-  .myClass {
-    /* height: 90vh !important; */
+ 
 
-    width: 25%;
-    overflow-x: hidden;
-    background-color: rgba(151, 135, 110, 0.493);
-    position: fixed;
-    margin-top: 100vh;
-  }
-
-  header {
-    background-color: #585852fd;
-    /* margin: 0 -16px; */
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    left: 0;
-    top: 0;
-    width: 100%;
-    position: fixed;
-    height: 112px;
-    margin-bottom: 10px;
-  }
+ 
   .main-content {
-    margin-top: 15.5vh;
+   
     min-height: 100vh;
   }
 }
@@ -296,6 +268,12 @@ form.create-note button {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  color: #70af85;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .card-img {
   height: 34rem !important;
